@@ -21,20 +21,17 @@ int main(int argc, char *argv[])
 	int opt_result = opt_response(argc, argv, opt);
 	if (opt_result != 0)
 	{
-		printf("Please input the command line argument according to the usage!\n");
+		printf("Please input the command line arguments according to the usage!\n");
 		return 1;
 	}
-	printf("IP address:%s\n", opt.addr_str);
-	printf("port number:%d\n", opt.port);
-	printf("module name:%s\n", opt.module_catalog);
-	printf("show verbose:%d\n", opt.verbose);
+	printf("Welcome to my web server!\n");
 
 	int sock;
 	struct sockaddr_in server_address;
 	bzero(&server_address, sizeof(server_address));
 	server_address.sin_family = PF_INET;
 
-	if (!opt.addr_str)
+	if (strcmp(opt.addr_str,"localhost")==0||!opt.addr_str)
 		server_address.sin_addr.s_addr = htons(INADDR_ANY);
 	else
 		server_address.sin_addr.s_addr = inet_addr(opt.addr_str);
@@ -47,9 +44,9 @@ int main(int argc, char *argv[])
 	assert(ret != -1);
 
 	if (ret >= 0)
-		cout << "Bind success!Connect to http://" << opt.addr_str << ":" << opt.port << "/" << endl;
+		cout << "Bind success!Connect to\nhttp://" << opt.addr_str << ":" << opt.port << "/" << endl;
 	cout << "Please enter " << opt.addr_str << ":" << opt.port << " in your website address column." << endl;
-
+    printf("\nModules loading....\n");
 	module_load(); //load modules
 	ret = listen(sock, 8);
 	assert(ret != -1);

@@ -25,9 +25,14 @@ const struct option long_opts[] =
 
 void print_help(char *prog)
 {
-    printf("[Usage]\n");
-    printf("%s -a 127.0.0.1 -p 8800 -m time\n", prog);
-    printf("[Default Settings]\n");
+    printf("[Command Line Usage Reference]\n");
+    printf("The following input formats are supported\n");
+    printf("%s\n", prog);
+    printf("%s -a 127.1.2.3\n", prog);
+    printf("%s -a localhost\n", prog);
+    printf("%s -p 8888\n", prog);
+    printf("%s --address 127.0.0.1 --port 8800 -m time\n", prog);
+    printf("\n[Default Settings]\n");
     printf("-a: IP address, default: 127.0.0.1\n");
     printf("-p: port number, default: 8800\n");
     printf("-m: module name, default: module waiting to be loaded..\n");

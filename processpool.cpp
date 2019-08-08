@@ -103,7 +103,7 @@ void processpool::runchild()
             }
             else
             {
-                cout << "[processpool]Child process No." << idx << " is working." << endl;
+                cout << "\n[processpool]Child process No." << idx << " is working." << endl;
                 char request[MAX_SIZ];
                 read(connfd, request, MAX_SIZ);
                 request[strlen(request) + 1] = '\0';
